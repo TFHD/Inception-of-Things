@@ -2,7 +2,7 @@
 
 #Docker installation 
 
-echo "[\e[31mDocker Installation]\e[0m" && sleep 1
+echo -e "[\e[31mDocker Installation]\e[0m" && sleep 1
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -14,8 +14,7 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 #K3D installation
 

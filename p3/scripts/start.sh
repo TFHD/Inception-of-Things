@@ -45,3 +45,4 @@ argocd app create wil-playground \
   --dest-namespace dev \
   --project default \
   --sync-policy automated
+

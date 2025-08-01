@@ -1,0 +1,71 @@
+global:
+  hosts:
+    domain: localhost
+  ingress:
+    enabled: false
+  minio:
+    enabled: true  # ACTIVE MinIO pour satisfaire le chart
+  appConfig:
+    # Utilise MinIO pour tous les composants
+    artifacts:
+      bucket: gitlab-artifacts
+      connection:
+        secret: gitlab-minio-secret
+        key: connection
+    lfs:
+      bucket: gitlab-lfs
+      connection:
+        secret: gitlab-minio-secret
+        key: connection
+    uploads:
+      bucket: gitlab-uploads
+      connection:
+        secret: gitlab-minio-secret
+        key: connection
+    packages:
+      bucket: gitlab-packages
+      connection:
+        secret: gitlab-minio-secret
+        key: connection
+    backups:
+      bucket: gitlab-backups
+      tmpBucket: gitlab-tmp
+
+gitlab-runner:
+  install: false
+
+certmanager:
+  install: false
+
+certmanager-issuer:
+  email: "dev@localhost.local"
+
+prometheus:
+  install: false
+
+postgresql:
+  install: true
+  postgresqlUsername: gitlab
+  postgresqlPassword: gitlab
+  postgresqlDatabase: gitlabhq_production
+  persistence:
+    enable: false
+
+# Configuration pour que toolbox utilise MinIO
+toolbox:
+  backups:
+    objectStorage:
+      config:
+        secret: gitlab-minio-secret
+        key: connection
+
+# Configuration MinIO intégrée
+minio:
+  persistence:
+    enabled: false
+
+gitlab:
+  gitaly:
+    persistence:
+      enabled: false
+

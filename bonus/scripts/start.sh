@@ -6,6 +6,7 @@ k3d cluster create iot
 echo -e "\n\e[32;1mCreation des namespaces\e[0m\n"
 kubectl create namespace argocd
 kubectl create namespace dev
+kubectl create namespace gitlab
 
 echo -e "\n\e[32;1mApplication de Argo dans son namespace\e[0m\n"
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -45,5 +46,16 @@ argocd app create wil-playground \
   --dest-namespace dev \
   --project default \
   --sync-policy automated
+
+echo -e "\n\e[32;1mInstallation de GitLab via Helm dans le namespace gitlab\e[0m\n"
+helm repo add gitlab https://charts.gitlab.io/
+helm repo update
+
+helm install gitlab gitlab/gitlab --namespace gitlab --timeout 600s -f ./confs/gitlab-values.yaml
+
+echo -e "\n\e[33mAttente que les pods GitLab soient prêts\e[0m"
+kubectl wait --for=condition=Ready pods --all --timeout=600s -n gitlab
+
+kubectl get secret gitlab-gitlab-initial-root-password -n gitlab -ojsonpath="{.data.password}" | base64 -d > gitlab_password.txt
 
 #kubectl port-forward svc/wil-playground -n dev 8888:8888

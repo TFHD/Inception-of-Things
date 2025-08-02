@@ -58,6 +58,11 @@ toolbox:
       config:
         secret: gitlab-minio-secret
         key: connection
+  resources:
+    requests:
+      memory: 256Mi
+    limits:
+      memory: 512Mi
 
 # Configuration MinIO intégrée
 minio:
@@ -68,4 +73,18 @@ gitlab:
   gitaly:
     persistence:
       enabled: false
+
+webservice:
+  resources:
+    requests:
+      memory: 1Gi
+    limits:
+      memory: 2Gi
+
+sidekiq:
+  resources:
+    requests:
+      memory: 512Mi
+    limits:
+      memory: 1Gi
 

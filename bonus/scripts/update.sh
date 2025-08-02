@@ -2,7 +2,7 @@ GITLAB_PASSWORD=$(sudo kubectl get secret gitlab-gitlab-initial-root-password -n
 
 echo "machine gitlab.k3d.gitlab.com
 login root
-password ${GITLAB_PASS}"> ~/.netrc
+password ${GITLAB_PASSWORD}"> ~/.netrc
 
 sudo mv ~/.netrc /root/
 sudo chmod 600 /root/.netrc

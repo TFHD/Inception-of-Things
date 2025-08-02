@@ -10,14 +10,6 @@ else
     echo "$HOST_ENTRY" | sudo tee -a "$HOSTS_FILE"
 fi
 
-#kubectl delete secret gitlab-minio-secret -n gitlab --ignore-not-found
-
-#echo -e "\n\e[32;1mCréation du secret MinIO pour GitLab\e[0m\n"
-#kubectl create secret generic gitlab-minio-secret -n gitlab \
-#  --from-literal=connection='{"provider":"AWS","aws_access_key_id":"minio","aws_secret_access_key":"minio123","region":"us-east-1","host":"minio","endpoint":"https://minio.gitlab.svc.cluster.local:9000"}' \
-#  --from-literal=accesskey=minio \
-#  --from-literal=secretkey=minio123
-
 echo -e "\n\e[32;1mInstallation de GitLab via Helm dans le namespace gitlab\e[0m\n"
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update

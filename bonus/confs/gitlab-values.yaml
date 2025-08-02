@@ -1,12 +1,12 @@
 global:
+  externalUrl: "http://localhost:30464"
   hosts:
     domain: localhost
   ingress:
     enabled: false
   minio:
-    enabled: true  # ACTIVE MinIO pour satisfaire le chart
+    enabled: true
   appConfig:
-    # Utilise MinIO pour tous les composants
     artifacts:
       bucket: gitlab-artifacts
       connection:
@@ -31,6 +31,20 @@ global:
       bucket: gitlab-backups
       tmpBucket: gitlab-tmp
 
+gitlab:
+  webservice:
+    service:
+      type: NodePort
+      nodePort: 30464
+    resources:
+      requests:
+        memory: 1Gi
+      limits:
+        memory: 2Gi
+  gitaly:
+    persistence:
+      enabled: false
+
 gitlab-runner:
   install: false
 
@@ -49,9 +63,8 @@ postgresql:
   postgresqlPassword: gitlab
   postgresqlDatabase: gitlabhq_production
   persistence:
-    enable: false
+    enabled: false
 
-# Configuration pour que toolbox utilise MinIO
 toolbox:
   backups:
     objectStorage:
@@ -64,22 +77,9 @@ toolbox:
     limits:
       memory: 512Mi
 
-# Configuration MinIO intégrée
 minio:
   persistence:
     enabled: false
-
-gitlab:
-  gitaly:
-    persistence:
-      enabled: false
-
-webservice:
-  resources:
-    requests:
-      memory: 1Gi
-    limits:
-      memory: 2Gi
 
 sidekiq:
   resources:
@@ -87,4 +87,3 @@ sidekiq:
       memory: 512Mi
     limits:
       memory: 1Gi
-

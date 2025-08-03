@@ -31,5 +31,3 @@ sudo kubectl wait --for=condition=ready --timeout=1200s pod -l app=webservice -n
 kubectl get secret gitlab-gitlab-initial-root-password -n gitlab -ojsonpath="{.data.password}" | base64 -d > gitlab_password.txt
 kubectl port-forward svc/gitlab-webservice-default 80:8181 -n gitlab 2>&1 >/dev/null &
 
-#kubectl port-forward svc/wil-playground -n dev 8888:8888
-

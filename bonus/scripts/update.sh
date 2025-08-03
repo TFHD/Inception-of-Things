@@ -20,3 +20,11 @@ git commit -m "update the repo"
 git push
 
 cd ..
+
+argocd app create wil-playground2 \
+  --repo http://gitlab-webservice-default.gitlab.svc:8181/root/test.git \
+  --path manifest/app \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace dev \
+  --project default \
+  --sync-policy automated

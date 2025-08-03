@@ -10,6 +10,9 @@ else
     echo "$HOST_ENTRY" | sudo tee -a "$HOSTS_FILE"
 fi
 
+echo -e "\n\e[32;1mCreation du namespace gitlab\e[0m\n"
+kubectl create namespace gitlab
+
 echo -e "\n\e[32;1mInstallation de GitLab via Helm dans le namespace gitlab\e[0m\n"
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update

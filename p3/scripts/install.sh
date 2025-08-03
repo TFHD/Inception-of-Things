@@ -2,7 +2,7 @@
 
 #Docker installation 
 
-echo -e "[\e[31mDocker Installation]\e[0m" && sleep 1
+echo -e "\e[32;1mDocker Installation]\e[0m" && sleep 1
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -18,12 +18,12 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 #K3D installation
 
-echo "[\e[31mK3D Installation]\e[0m" && sleep 1
+echo "\e[32;1mK3D Installation]\e[0m" && sleep 1
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 #kubectl installation
 
-echo "[\e[31mKubectl Installation]\e[0m" && sleep 1
+echo "[\e[32;1mKubectl Installation]\e[0m" && sleep 1
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/

@@ -30,3 +30,5 @@ argocd app create wil-playground2 \
   --dest-namespace dev \
   --project default \
   --sync-policy automated
+
+kubectl port-forward svc/wil-playground2 8888:8888 -n dev 2>&1 >/dev/null &

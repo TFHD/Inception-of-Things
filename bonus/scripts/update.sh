@@ -4,8 +4,7 @@ echo "machine gitlab.k3d.gitlab.com
 login root
 password ${GITLAB_PASSWORD}"> ~/.netrc
 
-sudo mv ~/.netrc /root/
-sudo chmod 600 /root/.netrc
+sudo chmod 600 ~/.netrc
 
 git clone http://gitlab.k3d.gitlab.com/root/test.git gitlab_repo
 git clone https://github.com/TFHD/Inception-of-Things-ressources.git github_repo

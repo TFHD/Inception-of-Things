@@ -15,6 +15,9 @@ rm -rf github_repo/
 
 cd gitlab_repo
 
+git config --global user.email "root@root.com"
+git config --global user.name "root"
+
 git add .
 git commit -m "update the repo"
 git push

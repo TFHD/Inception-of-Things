@@ -39,7 +39,7 @@ sleep 1
 argocd repo add https://github.com/TFHD/Inception-of-Things-ressources-sabartho
 sleep 1
 argocd app create wil-playground \
-  --repo https://github.com/TFHD/Inception-of-Things-ressources \
+  --repo https://github.com/TFHD/Inception-of-Things-ressources-sabartho \
   --path manifest/app \
   --dest-server https://kubernetes.default.svc \
   --dest-namespace dev \

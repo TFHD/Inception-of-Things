@@ -36,7 +36,7 @@ ARGOCD_USER=admin
 argocd login $ARGOCD_HOST --username $ARGOCD_USER --password $ARGOCD_PASS --insecure
 
 sleep 1
-argocd repo add https://github.com/TFHD/Inception-of-Things-ressources
+argocd repo add https://github.com/TFHD/Inception-of-Things-ressources-sabartho
 sleep 1
 argocd app create wil-playground \
   --repo https://github.com/TFHD/Inception-of-Things-ressources \

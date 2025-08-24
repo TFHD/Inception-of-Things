@@ -103,7 +103,8 @@ Vous pouvez alors lancer des applications distribuées ou tester des scénarios 
 Pour voir les nodes du cluster, connectez-vous à la VM principale et tapez :
 
 ```bash
-sudo k3s kubectl get nodes
+sudo -s
+kubectl get nodes -o wide
 ```
 Vous devriez voir les deux machines listées comme nodes du cluster.
 

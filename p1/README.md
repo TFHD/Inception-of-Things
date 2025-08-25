@@ -6,7 +6,7 @@ Dans cette partie, vous allez apprendre à créer un petit cluster Kubernetes, c
 
 ## 🛠️ Outils utilisés
 
--**Vagrant** : Permet de créer et configurer facilement des machines virtuelles par un simple fichier.
+- **Vagrant** : Permet de créer et configurer facilement des machines virtuelles par un simple fichier.
 - **VirtualBox** : Héberge les machines virtuelles.
 - **K3s** : Version compacte de Kubernetes, idéale pour les tests et l’IoT.
 

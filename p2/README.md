@@ -149,7 +149,9 @@ spec:
 
 Un script ajoute les noms de domaine dans `/etc/hosts` pour permettre l’accès local :
 ```
-192.168.56.110 app1.com app2.com app3.com
+192.168.56.110 app1.com
+192.168.56.110 app2.com
+192.168.56.110 app3.com
 ```
 **Explications :**
 - Cela permet de tester le routage comme si chaque application était hébergée sur un vrai site web.
